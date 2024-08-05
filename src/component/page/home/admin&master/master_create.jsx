@@ -3,15 +3,15 @@ import Master_Create_Style from "./admin_style/master_create_style";
 import { requestCreateMaster } from "../../../../Controller/Controller";
 
 const Master_Create = (props) => {
-    const [id ,setId] = useState('')
-    const [pw ,setPw] = useState('')
-    const [name ,setName] = useState('')
+    const [id, setId] = useState('')
+    const [pw, setPw] = useState('')
+    const [name, setName] = useState('')
     const [tel, setTel] = useState('')
     const [addr, setAddr] = useState('')
-    const [email ,setEmail] = useState('')
-    const [descrypt ,setDescrypt] = useState('')
+    const [email, setEmail] = useState('')
+    const [descrypt, setDescrypt] = useState('')
     const [userType, setUserType] = useState('USER_OWNER')
-    const [selectedRegion ,setSelectedRegion] = useState('')
+    const [selectedRegion, setSelectedRegion] = useState('')
 
     const handleRegionChange = (e) => {
         setSelectedRegion(e.target.value);
@@ -53,6 +53,6 @@ const Master_Create = (props) => {
             handleCreateButton={handleCreateButton}
         />
     )
-} 
+}
 
 export default Master_Create;

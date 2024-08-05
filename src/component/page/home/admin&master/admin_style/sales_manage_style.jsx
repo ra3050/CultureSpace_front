@@ -7,8 +7,8 @@ const Sales_Manage_Style = (props) => {
             <Search_Col_Container>
                 <Search_Row_Container>
                     <Search_Title>조회 구분</Search_Title>
-                    <Search_in_Container style={{flex: 6}}>
-                        
+                    <Search_in_Container style={{ flex: 6 }}>
+
                     </Search_in_Container>
                     <Search_Button>엑셀 다운로드</Search_Button>
                 </Search_Row_Container>
@@ -16,16 +16,16 @@ const Sales_Manage_Style = (props) => {
                 <Search_Row_Container>
                     <Search_Title>기간 선택</Search_Title>
                     <Search_in_Container>
-                        <Search_Input type="date"/>
+                        <Search_Input type="date" />
                         <p>~</p>
-                        <Search_Input type="date"/>
+                        <Search_Input type="date" />
                     </Search_in_Container>
                 </Search_Row_Container>
 
                 <Search_Row_Container>
                     <Search_Title>점포이름</Search_Title>
-                    <Search_in_Container style={{flex: 6}}>
-                        <Search_Input/>
+                    <Search_in_Container style={{ flex: 6 }}>
+                        <Search_Input />
                     </Search_in_Container>
                     <Search_Button>검색</Search_Button>
                 </Search_Row_Container>

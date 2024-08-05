@@ -10,23 +10,25 @@ const Calendar_Style = (props) => {
     const { calendarData, clickInfo, equipment, sheets } = props
     const { setStartDate, setEndDate } = props;
     const { handleSearchDateButton, handleCalendarClick, handleSearch } = props
-    const [ calendarSize, setCalendarSize ] = useState({width: 0, height: 0});
+    const [calendarSize, setCalendarSize] = useState({ width: 0, height: 0 });
     const widthRef = useRef();
 
     useEffect(() => {
         const updateParentWidth = () => {
             if (widthRef.current) {
                 const width = widthRef.current.offsetWidth;
-                setCalendarSize({width: width,
-                     height: width});
+                setCalendarSize({
+                    width: width,
+                    height: width
+                });
             }
-          }
+        }
 
         updateParentWidth();
         window.addEventListener('resize', updateParentWidth);
-    
+
         return () => {
-          window.removeEventListener('resize', updateParentWidth);
+            window.removeEventListener('resize', updateParentWidth);
         };
     }, [])
 
@@ -48,9 +50,9 @@ const Calendar_Style = (props) => {
                 <Result_Row_Container>
                     <Result_Title>날짜</Result_Title>
                     <Result_in_flex6_Container >
-                        <Search_Date type="date" onChange={e => setStartDate(e.target.value)}/>
+                        <Search_Date type="date" onChange={e => setStartDate(e.target.value)} />
                         <p>~</p>
-                        <Search_Date type="date" onChange={e => setEndDate(e.target.value)}/>
+                        <Search_Date type="date" onChange={e => setEndDate(e.target.value)} />
                     </Result_in_flex6_Container>
                     <Search_Button onClick={() => handleSearchDateButton()}>
                         검색
@@ -66,15 +68,15 @@ const Calendar_Style = (props) => {
             </Result_Col_Container>
 
             <Calendar width={calendarSize.width} height={calendarSize.height}>
-                <FullCalendar   
-                    plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin]}
+                <FullCalendar
+                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     initialView={'dayGridMonth'}
                     locale={'ko'}
                     headerToolbar={
                         {
-                            start: 'today', 
+                            start: 'today',
                             center: 'title',
-                            end: 'prev,next' 
+                            end: 'prev,next'
                         }
                     }
                     height={"85vh"}
@@ -83,7 +85,7 @@ const Calendar_Style = (props) => {
                 />
             </Calendar>
 
-            <div> 
+            <div>
                 <Data_Table>
                     <Data_Title>촬영시간</Data_Title>
                     <Data_Title>프레임이름</Data_Title>
@@ -103,7 +105,7 @@ const Calendar_Style = (props) => {
                         <Data_Date_Content>{item.real_price}</Data_Date_Content>
                         <Data_Date_Content>0</Data_Date_Content>
                     </Data_Table>
-                    
+
                 ))}
             </div>
         </Wrapper>

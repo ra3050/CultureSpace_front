@@ -7,10 +7,10 @@ import moment from "moment";
 export const calcDate = (info, choicedate, firstDate, lastDate) => {
     let refDate
     let data = []
-    if(choicedate === '당월') {
+    if (choicedate === '당월') {
         const currentMonth = moment().month()
         refDate = moment().month(currentMonth).format('YYYY-MM')
-        
+
         info.map(item => {
             const time = moment(item.sale_time).format('YYYY-MM')
             if (refDate === time) {
@@ -20,7 +20,7 @@ export const calcDate = (info, choicedate, firstDate, lastDate) => {
     } else if (choicedate === '금주') {
         const day = [0, 1, 2, 3, 4, 5, 6];
         const currentWeek = moment().week()
-        
+
         let refWeek = []
         day.map(item => {
             refWeek = [...refWeek, moment().week(currentWeek).day(item).format('YYYY-MM-DD')]
@@ -29,7 +29,7 @@ export const calcDate = (info, choicedate, firstDate, lastDate) => {
 
         info.map(item => {
             const time = item.sale_time
-            if (refDate.indexOf(time) !== -1 ) {
+            if (refDate.indexOf(time) !== -1) {
                 data = [...data, item]
             }
         })
@@ -41,9 +41,9 @@ export const calcDate = (info, choicedate, firstDate, lastDate) => {
                 data = [...data, item]
             }
         })
-    } else if (choicedate === '기간선택'){
+    } else if (choicedate === '기간선택') {
         // 날짜 선택
-        let refDayList =[]
+        let refDayList = []
         let value = true
         while (value) {
             const start = firstDate.format('YYYY-MM-DD')
@@ -55,7 +55,7 @@ export const calcDate = (info, choicedate, firstDate, lastDate) => {
                 value = false
             }
         }
-        
+
         info.map(item => {
             const time = moment(item.sale_time).format('YYYY-MM-DD')
             if (refDayList.indexOf(time) !== -1) {
@@ -75,13 +75,13 @@ const Point_Of_Frame = (props) => {
     const [designer, setDesigner] = useState([])
     const [desFrame, setDesFrame] = useState([])
     const [searchData, setSearchData] = useState([])
-    
+
     const [searchOfFirst, setSearchOfFirst] = useState()                // 기간선택 시작하는날
     const [searchOfLast, setSearchOfLast] = useState()                  // 기간선택 끝나는날
     const [choiceFrame, setChoiceFrame] = useState('default')           // 프레임 구분자 선택
     const [choiceEquipment, setChoiceEquipment] = useState('default')   // 기기 구분자 선택
     const navigation = useNavigate()
-    
+
     useLayoutEffect(() => {
         requestTotalSales(data => {
             if (data?.response?.status === 401) {
@@ -111,7 +111,7 @@ const Point_Of_Frame = (props) => {
     const handleToSearchDate = (e) => {
         setCheckToSearch(e.target.name)
     }
-    
+
     const handleSearchButton = () => {
         const groupData = {};
         const start = moment(searchOfFirst)
@@ -129,28 +129,28 @@ const Point_Of_Frame = (props) => {
             allDesignerFrame += item.frame_file + ','
         })
         console.log(allDesignerFrame)
-        
+
 
         customData.forEach(item => {
             const frame_code = item.frame_code;
             const equipment_id = item.equipment_id;
             const real_price = item.real_price;
             const print_count = item.print_count;
-            
+
             const frame_name = item.background_file;
             const parts = frame_name.split('\\')
             const sales_frame_name = parts[parts.length - 1].replace('.png', '') // 프레임 이름 추출
 
             const licence = item.royalty_price;
-        
+
             // 프레임 구분자 선택
             if (choiceFrame === 'original') {
                 if (allDesignerFrame.indexOf(sales_frame_name) !== -1) {
-                    return 
+                    return
                 }
-            } else if(choiceFrame === 'designer') { 
+            } else if (choiceFrame === 'designer') {
                 if (allDesignerFrame.indexOf(sales_frame_name) === -1) {
-                    return 
+                    return
                 }
             } else if (choiceFrame !== 'default') {
                 // 특정 디자이너의 프레임 정보를 확인하는 작업이 필요함
@@ -170,10 +170,12 @@ const Point_Of_Frame = (props) => {
             // 기간 선택 구분자 작성
 
             if (!groupData[sales_frame_name]) {
-                groupData[sales_frame_name] = {frameName: sales_frame_name, 
-                                                count: print_count,
-                                                 price: real_price,
-                                                licence: licence}
+                groupData[sales_frame_name] = {
+                    frameName: sales_frame_name,
+                    count: print_count,
+                    price: real_price,
+                    licence: licence
+                }
             }
             groupData[sales_frame_name].count += print_count
             groupData[sales_frame_name].price += real_price
@@ -187,7 +189,7 @@ const Point_Of_Frame = (props) => {
     }
 
     return (
-        <Frame_Style 
+        <Frame_Style
             salesData={salesData}
             equipment={equipment}
             frameName={frameName}
@@ -204,6 +206,6 @@ const Point_Of_Frame = (props) => {
             handleSearchButton={handleSearchButton}
         />
     )
-} 
+}
 
 export default Point_Of_Frame;

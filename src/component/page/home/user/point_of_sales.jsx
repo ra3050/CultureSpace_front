@@ -21,16 +21,16 @@ export const calcToday = (currentDay, info, callback) => {
         const infoDate = moment(item.sale_time).format('YYYY-MM-DD')
         if (infoDate === currentDay) {
             if (item.payment_method === 'METHOD_001') {
-                
+
                 card += item.real_price
             } else if (item.payment_method === 'METHOD_002') {
-                
+
                 cash += item.real_price
             }
             licence += item.royalty_price
         }
     })
-    
+
     const value = salesType(card, cash, card + cash, licence)
     callback(value)
 }
@@ -39,8 +39,8 @@ export const calcToWeek = (currentWeek, info, callback) => {
     var card = 0
     var cash = 0
     var licence = 0
-    let day = [0,1,2,3,4,5,6];
-    
+    let day = [0, 1, 2, 3, 4, 5, 6];
+
     day.map(item => {
         const currentDay = moment().week(currentWeek).day(item).format('YYYY-MM-DD')
         // console.log(currentDay)
@@ -50,17 +50,17 @@ export const calcToWeek = (currentWeek, info, callback) => {
             licence += data.licence
         })
     })
-    
+
     const value = salesType(card, cash, card + cash, 0)
     callback(value)
 }
 
-export const calcToSearch = (startDate, endDate, info, callback) => {  
+export const calcToSearch = (startDate, endDate, info, callback) => {
     /**
      * 날짜를 format형태로 가져오면안됩니다
      */
-    
-    let refDayList =[]
+
+    let refDayList = []
     let value = true
     while (value) {
         const start = startDate.format('YYYY-MM-DD')
@@ -79,10 +79,10 @@ export const calcToSearch = (startDate, endDate, info, callback) => {
     info.map(item => {
         const time = moment(item.sale_time).format('YYYY-MM-DD')
         if (refDayList.indexOf(time) !== -1) {
-            
+
             if (item.payment_method === 'METHOD_001') {
                 card += item.real_price
-            } else if (item.payment_method === 'METHOD_002') {               
+            } else if (item.payment_method === 'METHOD_002') {
                 cash += item.real_price
             }
             licence += item.royalty_price
@@ -112,12 +112,12 @@ const Point_Of_Sales = (props) => {
             const saleInfo = data.info;
             const currentDate = moment().format('YYYY-MM-DD')       // 당일 날짜로 변경필요
             setSalesInfo(saleInfo)
-            
+
             calcToday(currentDate, saleInfo, data => { // 당일매출계산
                 console.log(data)
                 setDay(data);
-            });         
-            
+            });
+
             const currentWeek = moment().week()  //당주로 변경해야함
             calcToWeek(currentWeek, saleInfo, data => {
                 console.log(data)
@@ -132,19 +132,19 @@ const Point_Of_Sales = (props) => {
 
             // 현재 월의 1일을 가져옵니다.
             const firstDayOfMonth = moment([year, month, 1]); // today.startOf('month')
-            const lastDayOfMonth =  moment([year, month]).endOf('month')// today.endOf('month');
+            const lastDayOfMonth = moment([year, month]).endOf('month')// today.endOf('month');
             calcToSearch(firstDayOfMonth, lastDayOfMonth, saleInfo, data => {
                 console.log(data)
                 setMonth(data)
             })
 
             let newChart = []
-            for(let i = 0; i < month+1; i++) {
+            for (let i = 0; i < month + 1; i++) {
                 const startDayOfMonth = moment([year, i, 1]);
                 const endDayOfMonth = moment([year, i]).endOf('month')
                 calcToSearch(startDayOfMonth, endDayOfMonth, saleInfo, data => {
                     console.log(data.total)
-                    newChart = [...newChart, {name: `${i+1}월`, uv: data.total}]
+                    newChart = [...newChart, { name: `${i + 1}월`, uv: data.total }]
                 })
             }
             setChart(newChart)
@@ -172,6 +172,6 @@ const Point_Of_Sales = (props) => {
             chart={chart}
         />
     )
-} 
+}
 
 export default Point_Of_Sales;

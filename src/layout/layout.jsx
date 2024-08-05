@@ -9,7 +9,7 @@ export const AppContext = createContext();
 const Layout = () => {
     const [accessLevel, setAccessLevel] = useState(false);
     const [userData, setUserData] = useState([]);
-    const [masterData, setMasterData]= useState([]);
+    const [masterData, setMasterData] = useState([]);
     const navigation = useNavigate();
 
     useLayoutEffect(() => {
@@ -31,7 +31,7 @@ const Layout = () => {
                         }
                     })
                 }
-                
+
                 if (data.result) {
                     let master = [];
                     data?.info?.map(item => {
@@ -52,9 +52,9 @@ const Layout = () => {
 
     return (
         <>
-            <AppContext.Provider value={{accessLevel, userData, masterData}}>
+            <AppContext.Provider value={{ accessLevel, userData, masterData }}>
                 <Header />
-                <Layout_Oulet_Form/>
+                <Layout_Oulet_Form />
             </AppContext.Provider>
         </>
     )

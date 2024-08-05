@@ -19,9 +19,9 @@ const Account_Fix = (props) => {
     const [ref, setRef] = useState(userData.ref_id ? userData.ref_id : 'admin');             // 담당총판
 
     const handleAddShop = () => {
-        requestMakeID({tag: 'KOR'}, data => {
-            console.log('id value',data)
-            setShoplist(prev => [...prev, {shop_id: data.id, owner_id: userData.user_id, delete_yn: 'n', brand_code: brand[0]?.key}])          // shoplist에 데이터를 추가합니다
+        requestMakeID({ tag: 'KOR' }, data => {
+            console.log('id value', data)
+            setShoplist(prev => [...prev, { shop_id: data.id, owner_id: userData.user_id, delete_yn: 'n', brand_code: brand[0]?.key }])          // shoplist에 데이터를 추가합니다
         })
     }
 
@@ -58,7 +58,7 @@ const Account_Fix = (props) => {
     }
 
     const handleSaveShop = (e) => {                  //매장 및 기기 정보를 갱신 및 생성합니다.
-        const info = {shoplist: shoplist[e.target.value], eqlist: eqlist}
+        const info = { shoplist: shoplist[e.target.value], eqlist: eqlist }
         requestSaveShop(info, data => {
             if (data.result) {
                 window.alert('정상적으로 생성하였습니다.')
@@ -67,14 +67,14 @@ const Account_Fix = (props) => {
     }
 
     const handleAddEquipment = (e) => {
-        requestMakeID({tag: 'KR'}, data => {
+        requestMakeID({ tag: 'KR' }, data => {
             setEqlist(prev => [...prev, {
                 equipment_id: data.id,
                 shop_id: shoplist[e.target.value].shop_id,
                 equipment_type: equipment[0]?.key
             }])
         })
-        
+
     }
 
     const handleDeleteShop = (index) => {                // 매장의 기기정보와 매장정보를 삭제합니다.
@@ -103,9 +103,9 @@ const Account_Fix = (props) => {
             if (data.result) {
                 setEqlist(data.eqInfo);
                 setShoplist(data.shopInfo);
-            } 
+            }
         })
-        
+
         // brand_code
         requestBrandList(data => {
             if (data.result) {
@@ -113,11 +113,11 @@ const Account_Fix = (props) => {
                 let brand_info = []
                 let equipment_info = []
                 info.map(item => {
-                    brand_info = [...brand_info, { key: item.brand_code, name: item.brand_name}]
+                    brand_info = [...brand_info, { key: item.brand_code, name: item.brand_name }]
                 })
                 setBrand(brand_info)
                 setEquipment(equipment_info)
-            } 
+            }
         })
 
         requestCodeList(data => {
@@ -135,18 +135,18 @@ const Account_Fix = (props) => {
     }, [])
 
     return (
-        <Account_Fix_Style 
+        <Account_Fix_Style
             userData={userData}
             masterData={masterData}
-            eqlist={eqlist} 
-            shoplist={shoplist} 
-            brand={brand} 
+            eqlist={eqlist}
+            shoplist={shoplist}
+            brand={brand}
             equipment={equipment}
 
             setShoplist={setShoplist}
             setEquipment={setEquipment}
-            setEqlist={setEqlist} 
-            
+            setEqlist={setEqlist}
+
             setUserName={setUserName}
             setTelNumber={setTelNumber}
             setAddress={setAddress}
@@ -160,8 +160,8 @@ const Account_Fix = (props) => {
             handleAddEquipment={handleAddEquipment}
             handleDeleteUserAccount={handleDeleteUserAccount}
             handleDeleteShop={handleDeleteShop}
-            />
+        />
     )
-} 
+}
 
 export default Account_Fix;

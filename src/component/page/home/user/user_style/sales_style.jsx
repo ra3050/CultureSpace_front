@@ -4,66 +4,68 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 
 const data = [
     {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+        name: 'Page A',
+        uv: 4000,
+        pv: 2400,
+        amt: 2400,
     },
     {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+        name: 'Page B',
+        uv: 3000,
+        pv: 1398,
+        amt: 2210,
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+        name: 'Page C',
+        uv: 2000,
+        pv: 9800,
+        amt: 2290,
     },
     {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+        name: 'Page D',
+        uv: 2780,
+        pv: 3908,
+        amt: 2000,
     },
     {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+        name: 'Page E',
+        uv: 1890,
+        pv: 4800,
+        amt: 2181,
     },
     {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
+        name: 'Page F',
+        uv: 2390,
+        pv: 3800,
+        amt: 2500,
     },
     {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
     },
-  ];
+];
 
 const Sales_Style = (props) => {
     const { day, week, month, setSearchOfFirst, setSearchOfLast, searchDate, handleSearch, chart } = props
-    const [chartSize , setChartSize] = useState({width: 0, height: 0});
+    const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
     const widthRef = useRef();
 
     useEffect(() => {
         const updateParentWidth = () => {
             if (widthRef.current) {
                 const width = widthRef.current.offsetWidth;
-                setChartSize({width: width,
-                              height: width * 0.6});
+                setChartSize({
+                    width: width,
+                    height: width * 0.6
+                });
             }
-          }
+        }
 
         updateParentWidth();
         window.addEventListener('resize', updateParentWidth);
-    
+
         return () => {
             window.removeEventListener('resize', updateParentWidth);
         };
@@ -74,17 +76,17 @@ const Sales_Style = (props) => {
             <Search_Container>
                 <Search_Title>날짜</Search_Title>
                 <Search_in_Container>
-                    <Search_Date 
+                    <Search_Date
                         type="date"
                         onChange={(e) => setSearchOfFirst(e.target.value)}
                     />
                     <p>~</p>
-                    <Search_Date 
+                    <Search_Date
                         type="date"
                         onChange={(e) => setSearchOfLast(e.target.value)}
                     />
                 </Search_in_Container>
-                <Search_Button 
+                <Search_Button
                     onClick={() => handleSearch()}
                 >
                     검색
@@ -102,87 +104,87 @@ const Sales_Style = (props) => {
 
                 <Data_Table>
                     <Data_Date_Title>{`당월`}</Data_Date_Title>
-                        <Data_Date_Container>
+                    <Data_Date_Container>
 
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>카드</Data_Date_Content>
-                                <Data_Date_Content>{`${month.card}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
-                            
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>현금</Data_Date_Content>
-                                <Data_Date_Content>{`${month.cash}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>카드</Data_Date_Content>
+                            <Data_Date_Content>{`${month.card}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
 
-                        </Data_Date_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>현금</Data_Date_Content>
+                            <Data_Date_Content>{`${month.cash}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
+
+                    </Data_Date_Container>
                     <Data_Date_Title>{`${month.total}`}</Data_Date_Title>
                     <Data_Date_Title>{`${month.licence}`}</Data_Date_Title>
                 </Data_Table>
 
                 <Data_Table>
                     <Data_Date_Title>{`금주`}</Data_Date_Title>
-                        <Data_Date_Container>
+                    <Data_Date_Container>
 
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>카드</Data_Date_Content>
-                                <Data_Date_Content>{`${week.card}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
-                            
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>현금</Data_Date_Content>
-                                <Data_Date_Content>{`${week.cash}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>카드</Data_Date_Content>
+                            <Data_Date_Content>{`${week.card}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
 
-                        </Data_Date_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>현금</Data_Date_Content>
+                            <Data_Date_Content>{`${week.cash}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
+
+                    </Data_Date_Container>
                     <Data_Date_Title>{`${week.total}`}</Data_Date_Title>
                     <Data_Date_Title>{`${week.licence}`}</Data_Date_Title>
                 </Data_Table>
 
                 <Data_Table>
                     <Data_Date_Title>{`금일`}</Data_Date_Title>
-                        <Data_Date_Container>
+                    <Data_Date_Container>
 
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>카드</Data_Date_Content>
-                                <Data_Date_Content>{`${day.card}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
-                            
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>현금</Data_Date_Content>
-                                <Data_Date_Content>{`${day.cash}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>카드</Data_Date_Content>
+                            <Data_Date_Content>{`${day.card}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
 
-                        </Data_Date_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>현금</Data_Date_Content>
+                            <Data_Date_Content>{`${day.cash}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
+
+                    </Data_Date_Container>
                     <Data_Date_Title>{`${day.total}`}</Data_Date_Title>
                     <Data_Date_Title>{`${day.licence}`}</Data_Date_Title>
                 </Data_Table>
 
                 <Data_Table>
                     <Data_Date_Title>{`검색`}</Data_Date_Title>
-                        <Data_Date_Container>
+                    <Data_Date_Container>
 
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>카드</Data_Date_Content>
-                                <Data_Date_Content>{`${searchDate.card}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
-                            
-                            <Data_Date_Sub_Container>
-                                <Data_Date_Content>현금</Data_Date_Content>
-                                <Data_Date_Content>{`${searchDate.cash}`}</Data_Date_Content>
-                            </Data_Date_Sub_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>카드</Data_Date_Content>
+                            <Data_Date_Content>{`${searchDate.card}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
 
-                        </Data_Date_Container>
+                        <Data_Date_Sub_Container>
+                            <Data_Date_Content>현금</Data_Date_Content>
+                            <Data_Date_Content>{`${searchDate.cash}`}</Data_Date_Content>
+                        </Data_Date_Sub_Container>
+
+                    </Data_Date_Container>
                     <Data_Date_Title>{`${searchDate.total}`}</Data_Date_Title>
                     <Data_Date_Title>{`${searchDate.licence}`}</Data_Date_Title>
                 </Data_Table>
             </div>
-            
+
             <Chart_Container ref={widthRef}>
                 <BarChart
                     data={chart}
                     width={chartSize.width}
                     height={chartSize.height}
-                    >
+                >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
@@ -199,25 +201,25 @@ const Sales_Style = (props) => {
 const ContentComponent = (props) => {
     // data: 콘텐츠 데이터, item: 조회구분 (월별, 주별, 일별, 기간별)
     // date값을 화면에 뿌려줌
-    const {data, title} = props
+    const { data, title } = props
     console.log(data)
-    
+
     return (
         <Data_Table key={title}>
             <Data_Date_Title>{`${title}`}</Data_Date_Title>
-                <Data_Date_Container>
+            <Data_Date_Container>
 
-                    <Data_Date_Sub_Container>
-                        <Data_Date_Content>카드</Data_Date_Content>
-                        <Data_Date_Content>{`${data.card}`}</Data_Date_Content>
-                    </Data_Date_Sub_Container>
-                    
-                    <Data_Date_Sub_Container>
-                        <Data_Date_Content>현금</Data_Date_Content>
-                        <Data_Date_Content>{`${data.cash}`}</Data_Date_Content>
-                    </Data_Date_Sub_Container>
+                <Data_Date_Sub_Container>
+                    <Data_Date_Content>카드</Data_Date_Content>
+                    <Data_Date_Content>{`${data.card}`}</Data_Date_Content>
+                </Data_Date_Sub_Container>
 
-                </Data_Date_Container>
+                <Data_Date_Sub_Container>
+                    <Data_Date_Content>현금</Data_Date_Content>
+                    <Data_Date_Content>{`${data.cash}`}</Data_Date_Content>
+                </Data_Date_Sub_Container>
+
+            </Data_Date_Container>
             <Data_Date_Title>{`${data.total}`}</Data_Date_Title>
             <Data_Date_Title>{`${data.licence}`}</Data_Date_Title>
         </Data_Table>

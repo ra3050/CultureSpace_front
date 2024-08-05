@@ -14,7 +14,7 @@ const Point_Of_Print = (props) => {
     const [currentTime, setCurrentTime] = useState();
 
     const [orderValue, setOrderValue] = useState(false)
-    const [orderStateValue, setOrderStateValue] = useState(false) 
+    const [orderStateValue, setOrderStateValue] = useState(false)
     const navigation = useNavigate()
 
     useLayoutEffect(() => {
@@ -40,15 +40,15 @@ const Point_Of_Print = (props) => {
             <Wrapper>
                 <State_Container>
                     <State_In_Container>
-                        <p style={{fontSize: '0.8rem', marginBottom: '0.5rem'}}>{'인화지 카운트가 \'0\'인경우 인화지를 교체해야합니다'}</p>
-                        <p style={{fontSize: '0.8rem'}}>{'원격 입금전, 고객이 어떤기기에 위치했는지 확인해주세요'}</p>
+                        <p style={{ fontSize: '0.8rem', marginBottom: '0.5rem' }}>{'인화지 카운트가 \'0\'인경우 인화지를 교체해야합니다'}</p>
+                        <p style={{ fontSize: '0.8rem' }}>{'원격 입금전, 고객이 어떤기기에 위치했는지 확인해주세요'}</p>
                     </State_In_Container>
                     <State_In_Container>
                         <Order_Button onClick={() => setOrderValue(prev => !prev)}>
-                            <p style={{fontSize: '0.8rem', margin: '0.25rem'}}>{'소모품주문'}</p>
+                            <p style={{ fontSize: '0.8rem', margin: '0.25rem' }}>{'소모품주문'}</p>
                         </Order_Button>
                         <Order_Button onClick={() => setOrderStateValue(prev => !prev)}>
-                            <p style={{fontSize: '0.8rem', margin: '0.25rem'}}>{'주문관리'}</p>
+                            <p style={{ fontSize: '0.8rem', margin: '0.25rem' }}>{'주문관리'}</p>
                         </Order_Button>
                     </State_In_Container>
                 </State_Container>
@@ -56,19 +56,19 @@ const Point_Of_Print = (props) => {
             {
                 shop.map((item, index) => {
                     return (
-                        <Print_Style shop={item} equipment={equipment} currentTime={currentTime}/>
+                        <Print_Style shop={item} equipment={equipment} currentTime={currentTime} />
                     )
                 })
             }
-            <Order 
-                orderValue={orderValue} 
+            <Order
+                orderValue={orderValue}
                 setOrderValue={setOrderValue}
                 shopInfo={shop}
-                orderType={type} 
+                orderType={type}
                 setCall={setCall}
             />
-            <Order_State 
-                orderStateValue={orderStateValue} 
+            <Order_State
+                orderStateValue={orderStateValue}
                 setOrderStateValue={setOrderStateValue}
                 shopInfo={shop}
                 setCall={setCall}
@@ -76,7 +76,7 @@ const Point_Of_Print = (props) => {
             />
         </>
     )
-} 
+}
 
 const Wrapper = styled.div`
     margin-bottom: 16px;

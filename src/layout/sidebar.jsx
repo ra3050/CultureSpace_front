@@ -12,18 +12,18 @@ const Sidebar = (props) => {
         const sort = {};
         userData.map(item => {
             const key = item.user_type === 'USER_MASTER' ? item.user_id : item.user_type === 'USER_OWNER' ? item.ref_id : 'null';
-            
+
             if (!sort[key]) {
-                sort[key] = {info: [item]};
+                sort[key] = { info: [item] };
             } else {
                 sort[key].info = [...sort[key].info, item]
             }
         })
-        
+
         const result = Object.values(sort)
         setSortedData(result)
     }, [userData])
-    
+
 
     const handleToButton = (e) => {
         const clickID = e.target.value;
@@ -37,14 +37,14 @@ const Sidebar = (props) => {
         })
     }
 
-    return(
+    return (
         <Wrapper>
             {
                 sortedData.map(item => {
                     const data = item?.info.sort((a, b) => {
                         const typeA = a.user_type.toUpperCase(); // 대소문자 구분 없이 정렬
                         const typeB = b.user_type.toUpperCase();
-                        
+
                         if (typeA < typeB) {
                             return -1;
                         } else if (typeA > typeB) {
@@ -53,11 +53,11 @@ const Sidebar = (props) => {
                             return 0;
                         }
                     })
-                    
+
                     return data?.map(item2 => {
                         if (item2.user_type === 'USER_MASTER') {
                             return (
-                                <Master_Button 
+                                <Master_Button
                                     value={item2.user_id}
                                     onClick={e => handleToButton(e)}
                                 >
@@ -67,11 +67,11 @@ const Sidebar = (props) => {
                         }
                         if (item2.user_type === 'USER_OWNER') {
                             return (
-                                <Owner_Button 
+                                <Owner_Button
                                     value={item2.user_id}
                                     onClick={e => handleToButton(e)}
                                 >
-                                    {'○ '+item2.user_name}
+                                    {'○ ' + item2.user_name}
                                 </Owner_Button>
                             )
                         }
@@ -83,29 +83,29 @@ const Sidebar = (props) => {
 }
 
 const Wrapper = styled.div`
-    @media ${({ theme }) => theme.device.computer } {
+    @media ${({ theme }) => theme.device.computer} {
         max-width: calc((100% - 1140px + 6rem) / 2);
         width: 100%;
         padding: 0px 15px;    
     }
     
-    @media ${({ theme }) => theme.device.laptop } {
+    @media ${({ theme }) => theme.device.laptop} {
         max-width: 992px;
         width: 100%;
         padding: 0px 15px;    
     }
 
-    @media ${({ theme }) => theme.device.tablet } {
+    @media ${({ theme }) => theme.device.tablet} {
         max-width: 720px;
         width: 100%;
         padding: 0px 15px;    
     }
 
-    @media ${({ theme }) => theme.device.mobile_big } {
+    @media ${({ theme }) => theme.device.mobile_big} {
         width: 100%;
         padding: 0px 15px;    
     }
-    @media ${({ theme }) => theme.device.mobile_small } {
+    @media ${({ theme }) => theme.device.mobile_small} {
         width: 100%;
         padding: 0px 15px;    
     }

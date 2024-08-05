@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { requestOrderCancel } from "../../../../../../Controller/Controller";
 
 const State_Style = (props) => {
-    const { item, setCall, goodsList } = props; 
+    const { item, setCall, goodsList } = props;
     const navigation = useNavigate()
-    
+
     const handleOrderButton = () => {
         if (window.confirm(`정말로 주문을 취소하시곘습니까?`)) {
             const info = {
@@ -53,10 +53,10 @@ const State_Style = (props) => {
                     }</Text>
             </Order_In>
             <Order_In>
-                <Text>{`합계금액: ${item.order_price}`}</Text>    
+                <Text>{`합계금액: ${item.order_price}`}</Text>
             </Order_In>
             <Order_In>
-                <Text>{item.shop_name}</Text>   
+                <Text>{item.shop_name}</Text>
             </Order_In>
             <Order_In>
                 <button onClick={() => handleOrderButton()}>
@@ -75,23 +75,23 @@ const Order_Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     
-    @media ${({ theme }) => theme.device.computer } {
+    @media ${({ theme }) => theme.device.computer} {
         width: 100%;
     }
     
-    @media ${({ theme }) => theme.device.laptop } {
+    @media ${({ theme }) => theme.device.laptop} {
         width: 100%;
     }
 
-    @media ${({ theme }) => theme.device.tablet } {
+    @media ${({ theme }) => theme.device.tablet} {
         width: 100%;
     }
 
-    @media ${({ theme }) => theme.device.mobile_big } {
+    @media ${({ theme }) => theme.device.mobile_big} {
         
         flex-direction: column;
     }
-    @media ${({ theme }) => theme.device.mobile_small } {
+    @media ${({ theme }) => theme.device.mobile_small} {
         
         flex-direction: column;
     }
@@ -99,23 +99,23 @@ const Order_Container = styled.div`
 
 const Order_In = styled.div`
    margin : 0.25rem;
-    @media ${({ theme }) => theme.device.computer } {
+    @media ${({ theme }) => theme.device.computer} {
         flex: 1;
     }
     
-    @media ${({ theme }) => theme.device.laptop } {
+    @media ${({ theme }) => theme.device.laptop} {
         flex: 1;
     }
 
-    @media ${({ theme }) => theme.device.tablet } {
+    @media ${({ theme }) => theme.device.tablet} {
         padding: 0px 15px;    
     }
 
-    @media ${({ theme }) => theme.device.mobile_big } {
+    @media ${({ theme }) => theme.device.mobile_big} {
         
         padding: 0px 15px;    
     }
-    @media ${({ theme }) => theme.device.mobile_small } {
+    @media ${({ theme }) => theme.device.mobile_small} {
         
         padding: 0px 15px;    
     }

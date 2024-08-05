@@ -23,20 +23,20 @@ const Print_Style = (props) => {
             if (item.last_login_time) {
                 // 시작 시간
                 const startTime = moment(currentTime, 'YYYY-MM-DD HH:mm:ss').add(9, 'h');
-                        
+
                 // 종료 시간
                 const endTime = moment(item.last_login_time, 'YYYY-MM-DD HH:mm:ss');
-    
+
                 // 두 시간 간격 계산
                 const duration = moment.duration(endTime.diff(startTime));
-    
+
                 // 간격을 시간, 분, 초로 변환
                 const hours = duration.asHours();
                 const minutes = duration.asMinutes();
                 const seconds = duration.asSeconds();
                 console.log(startTime, endTime);
                 console.log(hours, minutes, seconds);
-    
+
                 if (minutes > 20) {
                     result = false
                 }
@@ -56,7 +56,7 @@ const Print_Style = (props) => {
         if (item.last_login_time) {
             // 시작 시간
             const startTime = moment(currentTime, 'YYYY-MM-DD HH:mm:ss').add(9, 'h');
-                    
+
             // 종료 시간
             const endTime = moment(item.last_login_time, 'YYYY-MM-DD HH:mm:ss');
 
@@ -90,8 +90,8 @@ const Print_Style = (props) => {
         }}>
             <State_Container check={true}>
                 <State_In_Container>
-                    <h2 style={{fontSize: '1rem', fontWeight: 500, lineHeight: 1.2, margin: '0.5rem', textAlign: 'center'}}>{title()}</h2>
-                    <p style={{fontSize: '1rem', fontWeight: 400, lineHeight: 1.2, margin: '0.5rem', alignSelf: 'flex-end'}}>{calcShopState() ? '기기상태  🟢' : '기기상태  🔴'} </p>
+                    <h2 style={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.2, margin: '0.5rem', textAlign: 'center' }}>{title()}</h2>
+                    <p style={{ fontSize: '1rem', fontWeight: 400, lineHeight: 1.2, margin: '0.5rem', alignSelf: 'flex-end' }}>{calcShopState() ? '기기상태  🟢' : '기기상태  🔴'} </p>
                 </State_In_Container>
                 {
                     equipment.map(item => {
@@ -102,33 +102,33 @@ const Print_Style = (props) => {
                                 <Equipment_In_Container check={click} onClick={e => {
                                     if (!eqClick) {
                                         setEqClick(prev => !prev);
-                                    } 
+                                    }
                                     setChooseEq(item);
                                     e.stopPropagation();
                                 }}>
-                                    <h2 style={{fontSize: '1rem', fontWeight: 500, lineHeight: 1.2, margin: '0.5rem', textAlign: 'center'}}>{item.room_name}</h2>
-                                    <p style={{fontSize: '1rem', fontWeight: 400, lineHeight: 1.2, margin: '0.5rem', alignSelf: 'flex-end'}}>{equipmentState(item)} </p>
+                                    <h2 style={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.2, margin: '0.5rem', textAlign: 'center' }}>{item.room_name}</h2>
+                                    <p style={{ fontSize: '1rem', fontWeight: 400, lineHeight: 1.2, margin: '0.5rem', alignSelf: 'flex-end' }}>{equipmentState(item)} </p>
                                 </Equipment_In_Container>
                             )
                         }
                         return comp;
-                    })    
+                    })
                 }
             </State_Container>
-            
+
 
             <State_Container check={eqClick}>
                 <State_Colunm_Container>
-                    <p style={{fontSize: '0.8rem', fontWeight: 400, lineHeight: 1.2, marginBottom: '1rem'}}>{'상태코드 : {stateCode}'} </p>
+                    <p style={{ fontSize: '0.8rem', fontWeight: 400, lineHeight: 1.2, marginBottom: '1rem' }}>{'상태코드 : {stateCode}'} </p>
                 </State_Colunm_Container>
 
                 <State_Colunm_Container>
-                    <p style={{fontSize: '0.8rem', fontWeight: 400, lineHeight: 1.2, marginBottom: '1rem'}}>{`인화지잔량: ${chooseEq?.remained_sheets}`} </p>
+                    <p style={{ fontSize: '0.8rem', fontWeight: 400, lineHeight: 1.2, marginBottom: '1rem' }}>{`인화지잔량: ${chooseEq?.remained_sheets}`} </p>
                 </State_Colunm_Container>
 
                 <State_Colunm_Container>
                     <Create_Button
-                        onClick={e =>{
+                        onClick={e => {
                             e.stopPropagation();
                         }}
                     >

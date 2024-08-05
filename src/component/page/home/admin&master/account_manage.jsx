@@ -14,8 +14,8 @@ const Account_Manage = (props) => {
     // }, [])
 
     return (
-        <Account_Manage_Style/>
+        <Account_Manage_Style />
     )
-} 
+}
 
 export default Account_Manage;

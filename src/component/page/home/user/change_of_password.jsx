@@ -13,15 +13,15 @@ const Change_Of_Password = () => {
         const info = {
             oldpassword: old,
             password: newpass
-        }  
+        }
 
         if (newpass.length > 10) {
             if (newpass === repass) {
-                reqeustReIssuePassword(info , data => {
+                reqeustReIssuePassword(info, data => {
                     if (data?.response?.status === 401) {
                         navigation('/')
                     }
-        
+
                     if (data.result) {
                         window.alert('비밀번호를 성공적으로 변경하였습니다.')
                         window.location = '/'
@@ -31,15 +31,15 @@ const Change_Of_Password = () => {
                 })
             } else {
                 window.alert('비밀번호를 다시 확인해주세요')
-            }    
+            }
         } else {
             window.alert('비밀번호는 10자리 이상이여야 합니다.')
         }
-        
+
     }
 
     return (
-        <Change_Pw_Style handleChangeButton={handleChangeButton} setOld={setOld} setNewPass={setNewPass} setRePass={setRePass}/>
+        <Change_Pw_Style handleChangeButton={handleChangeButton} setOld={setOld} setNewPass={setNewPass} setRePass={setRePass} />
     )
 }
 

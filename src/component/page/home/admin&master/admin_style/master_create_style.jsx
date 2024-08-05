@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components"
 
 const koreaRegions = [
@@ -32,19 +32,19 @@ const Master_Create_Style = (props) => {
                 <Master_Row_Container>
                     <Master_Title>사용자 ID</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setId(e.target.value)}/>
+                        <Master_Input onChange={e => setId(e.target.value)} />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
                     <Master_Title>사용자 PW</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setPw(e.target.value)}/>
+                        <Master_Input onChange={e => setPw(e.target.value)} />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
                     <Master_Title>사용자 이름</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setName(e.target.value)}/>
+                        <Master_Input onChange={e => setName(e.target.value)} />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
@@ -56,19 +56,19 @@ const Master_Create_Style = (props) => {
                 <Master_Row_Container>
                     <Master_Title>전화번호</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setTel(e.target.value)} type="number"/>
+                        <Master_Input onChange={e => setTel(e.target.value)} type="number" />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
                     <Master_Title>이메일</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setEmail(e.target.value)} type="email"/>
+                        <Master_Input onChange={e => setEmail(e.target.value)} type="email" />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
                     <Master_Title>정보</Master_Title>
                     <Master_in_Container>
-                        <Master_Input onChange={e => setDescrypt(e.target.value)}/>
+                        <Master_Input onChange={e => setDescrypt(e.target.value)} />
                     </Master_in_Container>
                 </Master_Row_Container>
                 <Master_Row_Container>
@@ -80,7 +80,7 @@ const Master_Create_Style = (props) => {
                         </select>
                     </Master_in_Container>
                 </Master_Row_Container>
-                
+
                 {/* <Master_Row_Container>
                     <Master_Title>담당지역</Master_Title>
                     <Master_in_Container>

@@ -43,19 +43,19 @@ const OrderStyle = (props) => {
                             return (
                                 <Table_Container>
                                     <Table_Content>
-                                    {
-                                        item.shop_name
-                                    }
+                                        {
+                                            item.shop_name
+                                        }
                                     </Table_Content>
                                     <Table_Content>{item.owner_id}</Table_Content>
                                     <Table_Content>
-                                    {
-                                        goodsList.map(data => {
-                                            if (data.good_id === item.good_id) {
-                                                return data.good_name
-                                            }
-                                        })
-                                    }
+                                        {
+                                            goodsList.map(data => {
+                                                if (data.good_id === item.good_id) {
+                                                    return data.good_name
+                                                }
+                                            })
+                                        }
                                     </Table_Content>
                                     <Table_Content>{item.order_price}</Table_Content>
                                     <Table_Content>{moment(item.order_time).format('YYYY-MM-DD hh:mm:ss')}</Table_Content>

@@ -11,15 +11,15 @@ const Frame_Style = (props) => {
                 <Search_Row_Container>
                     <Search_Title>조회 구분</Search_Title>
                     <Search_in_Container>
-                        <select style={{marginRight: 4, marginLeft: 4}} onChange={e => setChoiceFrame(e.target.value)}>
+                        <select style={{ marginRight: 4, marginLeft: 4 }} onChange={e => setChoiceFrame(e.target.value)}>
                             <option value='default'>프레임전체</option>
                             <option value='original'>오리지날 프레임</option>
                             <option value='designer'>디자이너 프레임</option>
                         </select>
-                        <select style={{marginRight: 4, marginLeft: 4}} onChange={e => setChoiceEquipment(e.target.value)}>
+                        <select style={{ marginRight: 4, marginLeft: 4 }} onChange={e => setChoiceEquipment(e.target.value)}>
                             <option value='default'>기기전체</option>
                             {equipment?.map(item => (
-                                    <option value={item.equipment_id}>{item.room_name}</option>
+                                <option value={item.equipment_id}>{item.room_name}</option>
                             ))}
                         </select>
                     </Search_in_Container>
@@ -27,20 +27,20 @@ const Frame_Style = (props) => {
 
                 <Search_Row_Container>
                     <Search_Title>기간 선택</Search_Title>
-                    <Search_in_Container_column style={{flex: 6}}>
+                    <Search_in_Container_column style={{ flex: 6 }}>
                         {
                             arrSearchDate?.map(item => {
                                 if (checkToSearch === item) {
                                     return (
                                         <>
-                                            <Search_Date type="checkbox" name={item} id={item} checked onChange={e => handleToSearchDate(e)}/> 
+                                            <Search_Date type="checkbox" name={item} id={item} checked onChange={e => handleToSearchDate(e)} />
                                             <label for={item}>{item}</label>
                                         </>
                                     )
                                 } else {
                                     return (
                                         <>
-                                            <Search_Date type="checkbox" name={item} id={item} checked={false} onChange={e => handleToSearchDate(e)}/> 
+                                            <Search_Date type="checkbox" name={item} id={item} checked={false} onChange={e => handleToSearchDate(e)} />
                                             <label for={item}>{item}</label>
                                         </>
                                     )
@@ -50,13 +50,13 @@ const Frame_Style = (props) => {
                         {
                             checkToSearch === '기간선택' && (
                                 <>
-                                    <Search_Date type="date" onChange={e => setSearchOfFirst(e.target.value)}/>
+                                    <Search_Date type="date" onChange={e => setSearchOfFirst(e.target.value)} />
                                     <p>~</p>
-                                    <Search_Date type="date" onChange={e => setSearchOfLast(e.target.value)}/>
+                                    <Search_Date type="date" onChange={e => setSearchOfLast(e.target.value)} />
                                 </>
                             )
                         }
-                        
+
                     </Search_in_Container_column>
                     <Search_Button onClick={() => handleSearchButton()}>검색</Search_Button>
                 </Search_Row_Container>
@@ -81,7 +81,7 @@ const Frame_Style = (props) => {
             }
         </Wrapper>
     )
-} 
+}
 
 const Wrapper = styled.div`
     background-color: white;
@@ -129,11 +129,11 @@ const Search_in_Container_column = styled.div`
     display: flex;
     flex-direction: row;
 
-    @media ${({ theme }) => theme.device.mobile_big } {
+    @media ${({ theme }) => theme.device.mobile_big} {
         
         flex-direction: column;
     }
-    @media ${({ theme }) => theme.device.mobile_small } {
+    @media ${({ theme }) => theme.device.mobile_small} {
         
         flex-direction: column;
     }

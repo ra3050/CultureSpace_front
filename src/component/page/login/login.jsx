@@ -4,7 +4,7 @@ import { requestSignIn } from "../../../Controller/Controller";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-    const [userId, setUserId] = useState('') 
+    const [userId, setUserId] = useState('')
     const [userPwd, setUserPwd] = useState('')
     const navigation = useNavigate();
 
@@ -19,9 +19,9 @@ const Login = (props) => {
             }
         })
     }
-    
+
     return (
-        <Login_Style setUserId={setUserId} setUserPwd={setUserPwd} handleLogin={handleLogin}/>
+        <Login_Style setUserId={setUserId} setUserPwd={setUserPwd} handleLogin={handleLogin} />
     )
 }
 

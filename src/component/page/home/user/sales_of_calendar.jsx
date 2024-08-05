@@ -24,7 +24,7 @@ const Sales_of_calendar = (props) => {
             const info = data.info;
             setRealData(info)       // 최초 로딩 데이터 저장
             const eqData = data.eqInfo;
-            
+
             const sortInfo = info?.sort((a, b) => {
                 const timeA = moment(a.sale_time);
                 const timeB = moment(b.sale_time);
@@ -40,13 +40,13 @@ const Sales_of_calendar = (props) => {
                 }
             })
 
-            const groupData = {};            
+            const groupData = {};
             info.forEach(item => {
                 const { real_price, sale_time } = item;
                 const sale_time_current = moment(sale_time).format('YYYY-MM-DD')
 
                 if (!groupData[sale_time_current]) {
-                    groupData[sale_time_current] = {title: 0, date: sale_time_current, info: []}
+                    groupData[sale_time_current] = { title: 0, date: sale_time_current, info: [] }
                 }
 
                 groupData[sale_time_current].info = [...groupData[sale_time_current].info, item]
@@ -89,22 +89,22 @@ const Sales_of_calendar = (props) => {
     const handleSearch = (e) => {
         const value = e.target.value
         console.log(value)
-        
+
         const info = realData;
-        const groupData = {};            
+        const groupData = {};
         info.forEach(item => {
             const { real_price, sale_time } = item;
             const sale_time_current = moment(sale_time).format('YYYY-MM-DD')
 
             if (value !== 'default') {
                 if (value !== item.equipment_id) {
-                    return 
+                    return
                 }
             }
-            
+
 
             if (!groupData[sale_time_current]) {
-                groupData[sale_time_current] = {title: 0, date: sale_time_current, info: []}
+                groupData[sale_time_current] = { title: 0, date: sale_time_current, info: [] }
             }
 
             groupData[sale_time_current].info = [...groupData[sale_time_current].info, item]
@@ -119,7 +119,7 @@ const Sales_of_calendar = (props) => {
 
         let sheet_cnt = 0
         if (value === 'default') {
-            equipment.map(item => {       
+            equipment.map(item => {
                 sheet_cnt += item.remained_sheets
             })
         } else {
@@ -146,18 +146,18 @@ const Sales_of_calendar = (props) => {
         while (result) {
             const startFormat = start.format('YYYY-MM-DD');
             const endFormat = end.format('YYYY-MM-DD');
-            
-            if (originInfo[startFormat]){
+
+            if (originInfo[startFormat]) {
                 info = info.concat(originInfo[startFormat].info)
             }
-                
-            
+
+
             if (startFormat === endFormat) {
                 result = false
             }
             start.add(1, 'day')
         }
-        
+
         const timeSortInfo = info?.sort((a, b) => {
             const timeA = moment(a.sale_time).format('hh:mm:ss');
             const timeB = moment(b.sale_time).format('hh:mm:ss');
@@ -173,11 +173,11 @@ const Sales_of_calendar = (props) => {
 
         setClickInfo(timeSortInfo)
     }
-    
+
     return (
-        <Calendar_Style 
-            calendarData={salesInfo} 
-            clickInfo={clickInfo} 
+        <Calendar_Style
+            calendarData={salesInfo}
+            clickInfo={clickInfo}
             handleCalendarClick={handleCalendarClick}
             equipment={equipment}
             handleSearch={handleSearch}
@@ -188,6 +188,6 @@ const Sales_of_calendar = (props) => {
 
         />
     )
-} 
+}
 
 export default Sales_of_calendar;

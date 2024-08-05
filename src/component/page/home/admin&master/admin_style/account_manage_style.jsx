@@ -18,29 +18,29 @@ const Account_Manage_Style = (props) => {
             userData.map(item => {
                 if (item?.user_name?.indexOf(text) !== -1) {
                     prev = [...prev, item];
-                    
+
                     return
-                } 
+                }
                 if (item?.user_id?.indexOf(text) !== -1) {
                     prev = [...prev, item];
-                    
+
                     return
-                } 
+                }
                 if (item?.user_addr && item?.user_addr?.indexOf(text) !== -1) {
                     prev = [...prev, item];
-                    
+
                     return
-                } 
+                }
                 if (item?.email && item?.user_email?.indexOf(text) !== -1) {
                     prev = [...prev, item];
-                    
+
                     return
-                } 
+                }
                 if (item?.user_info && item?.user_info?.indexOf(text) !== -1) {
                     prev = [...prev, item];
-                    
+
                     return
-                } 
+                }
             })
             console.log(prev)
             setSearchData(prev);
@@ -51,8 +51,8 @@ const Account_Manage_Style = (props) => {
         <Wrapper>
             <Search_Col_Container>
                 <Search_Row_Container>
-                    <Search_in_Container style={{flex: 6}}>
-                        <Search_Input placeholder="검색" onChange={e => search(e)}/>
+                    <Search_in_Container style={{ flex: 6 }}>
+                        <Search_Input placeholder="검색" onChange={e => search(e)} />
                     </Search_in_Container>
                     <Search_Button>검색</Search_Button>
                 </Search_Row_Container>
@@ -73,7 +73,7 @@ const Account_Manage_Style = (props) => {
                     }
                     const comp = (
                         (
-                            <Table_Container onClick={() => navigation('/admin/account_fix', {state: {userData: item, masterData: masterData}})}>
+                            <Table_Container onClick={() => navigation('/admin/account_fix', { state: { userData: item, masterData: masterData } })}>
                                 <Table_Content>{item.user_name}</Table_Content>
                                 <Table_Content>{item.user_id}</Table_Content>
                                 <Table_Content>{item.user_addr}</Table_Content>

@@ -3,33 +3,33 @@ import theme from "../../../../../styles/ThemeProps"
 
 const Change_Pw_Style = (props) => {
     const { handleChangeButton, setOld, setNewPass, setRePass } = props
-    
+
     return (
         <ThemeProvider theme={theme}>
             <Wrapper>
                 <Wrapper2>
                     <Login_Container>
-                        <h2 style={{fontSize: '2rem', fontWeight: 500, lineHeight: 1.2, marginBottom: '3rem'}}>비밀번호 변경하기</h2>
-                        <p style={{fontSize: '1rem', marginBottom: '1rem'}}>기존 비밀번호 입력</p>
+                        <h2 style={{ fontSize: '2rem', fontWeight: 500, lineHeight: 1.2, marginBottom: '3rem' }}>비밀번호 변경하기</h2>
+                        <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>기존 비밀번호 입력</p>
                         <Input_Container>
-                            <Input name="oldPassword" type="password" onChange={ e => setOld(e.target.value)}/>
+                            <Input name="oldPassword" type="password" onChange={e => setOld(e.target.value)} />
                         </Input_Container>
 
-                        <p style={{fontSize: '1rem', marginBottom: '1rem'}}>비밀번호 입력</p>
+                        <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>비밀번호 입력</p>
                         <Input_Container>
-                            <Input name="newPassword" type="password" onChange={e => setNewPass(e.target.value)}/>
+                            <Input name="newPassword" type="password" onChange={e => setNewPass(e.target.value)} />
                         </Input_Container>
 
-                        <p style={{fontSize: '1rem', marginBottom: '1rem'}}>비밀번호 확인</p>
+                        <p style={{ fontSize: '1rem', marginBottom: '1rem' }}>비밀번호 확인</p>
                         <Input_Container>
-                            <Input name="reNewPassword" type="password" onChange={e => setRePass(e.target.value)}/>
+                            <Input name="reNewPassword" type="password" onChange={e => setRePass(e.target.value)} />
                         </Input_Container>
                         <Login_Button onClick={() => handleChangeButton()}>비밀번호 변경하기</Login_Button>
                     </Login_Container>
                 </Wrapper2>
             </Wrapper>
         </ThemeProvider>
-        
+
     )
 }
 
@@ -42,25 +42,25 @@ const Wrapper = styled.div`
 `
 
 const Wrapper2 = styled.div`
-    @media ${({ theme }) => theme.device.computer } {
+    @media ${({ theme }) => theme.device.computer} {
         max-width: calc(1140px - 6rem);
         width: 100%;
         padding: 0px 15px;    
     }
     
-    @media ${({ theme }) => theme.device.laptop } {
+    @media ${({ theme }) => theme.device.laptop} {
         max-width: 992px;
         width: 100%;
         padding: 0px 15px;    
     }
 
-    @media ${({ theme }) => theme.device.tablet } {
+    @media ${({ theme }) => theme.device.tablet} {
         width: 720px;
         width: 100%;
         padding: 0px 15px;    
     }
 
-    @media ${({ theme }) => theme.device.mobile_big } {
+    @media ${({ theme }) => theme.device.mobile_big} {
         width: 100%;
         padding: 0px 15px;    
     }

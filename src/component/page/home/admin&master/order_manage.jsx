@@ -18,7 +18,7 @@ const Order_Manage = (props) => {
                 const list = data?.info?.sort((a, b) => {
                     const typeA = a.order_time.toUpperCase(); // 대소문자 구분 없이 정렬
                     const typeB = b.order_time.toUpperCase();
-                    
+
                     if (typeA < typeB) {
                         return -1;
                     } else if (typeA > typeB) {
@@ -48,6 +48,6 @@ const Order_Manage = (props) => {
             goodsList={goodsList}
         />
     )
-} 
+}
 
 export default Order_Manage;

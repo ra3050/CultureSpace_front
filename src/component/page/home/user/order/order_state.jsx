@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import State_Style from "./style/state_style";
 
 const Order_State = (props) => {
-    const { orderStateValue, setOrderStateValue, shopInfo, setCall, call } = props; 
+    const { orderStateValue, setOrderStateValue, shopInfo, setCall, call } = props;
     const [orderList, setOrderList] = useState([]);
     const [goodsList, setGoodsList] = useState([]);
     const navigation = useNavigate()
@@ -15,7 +15,7 @@ const Order_State = (props) => {
             if (data?.response?.status === 401) {
                 navigation('/')
             }
-            
+
             if (data.result) {
                 setOrderList(data.info)
             } else {
@@ -27,7 +27,7 @@ const Order_State = (props) => {
             if (data?.response?.status === 401) {
                 navigation('/')
             }
-            
+
             if (data.result) {
                 setGoodsList(data.info)
             }
@@ -39,7 +39,7 @@ const Order_State = (props) => {
             if (data?.response?.status === 401) {
                 navigation('/')
             }
-            
+
             if (data.result) {
                 setOrderList(data.info)
             } else {
@@ -56,7 +56,7 @@ const Order_State = (props) => {
             <Modal.Body>
                 {
                     orderList.map(item => (
-                        <State_Style item={item} setCall={setCall} goodsList={goodsList}/>
+                        <State_Style item={item} setCall={setCall} goodsList={goodsList} />
                     ))
                 }
             </Modal.Body>

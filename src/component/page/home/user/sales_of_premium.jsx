@@ -18,20 +18,20 @@ const Sales_of_Premium = (props) => {
     const navigation = useNavigate()
 
     const saveXlsxData = (startDate, endDate, info) => {
-        let refDayList =[]
+        let refDayList = []
         let value = true
         while (value) {
             const start = startDate.format('YYYY-MM-DD')
             const end = endDate.format('YYYY-MM-DD');
-            
+
             refDayList = [...refDayList, start]
             startDate.add(1, 'day')
             if (start === end) {
                 value = false
             }
         }
-    
-        let XlsxData =[]
+
+        let XlsxData = []
         info.map((item, index) => {
             const time = moment(item.sale_time).format('YYYY-MM-DD')
             if (refDayList.indexOf(time) !== -1) {
@@ -39,7 +39,7 @@ const Sales_of_Premium = (props) => {
                 XlsxData = [...XlsxData, item]
             }
         })
-        console.log(XlsxData)  
+        console.log(XlsxData)
         return XlsxData;
     }
 
@@ -68,9 +68,9 @@ const Sales_of_Premium = (props) => {
                         data.royalty_price
                     ]
                 ],
-                {origin: -1}
+                { origin: -1 }
             );
-            ws['!cols'] =[
+            ws['!cols'] = [
                 { wpx: 200 },
                 { wpx: 200 },
                 { wpx: 200 },
@@ -83,15 +83,15 @@ const Sales_of_Premium = (props) => {
             return false;
         });
 
-        const wb = {Sheets: { data: ws }, SheetNames:['data']}
-        const excelButter = XLSX.write(wb, { bookType: 'xlsx', type: 'array'});
+        const wb = { Sheets: { data: ws }, SheetNames: ['data'] }
+        const excelButter = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
 
-        const excelFile = new Blob([excelButter], { type: excelFileType});
+        const excelFile = new Blob([excelButter], { type: excelFileType });
         FileSaver.saveAs(excelFile, excelFileName + excelFileExtension);
     }
 
     useLayoutEffect(() => {
-        
+
         const nowMonth = moment().month();
         console.log('current month :', nowMonth)
         setMonth(nowMonth)
@@ -110,13 +110,13 @@ const Sales_of_Premium = (props) => {
             if (data?.response?.status === 401) {
                 navigation('/')
             }
-            
+
             const year = moment().year()
             const month = moment().month()
             const startDate = moment([year, month - 1, 1]).startOf('month')         //month-1로 변경해주어야함
             const endDate = moment([year, month - 1]).endOf('month')                //month-1로 변경해주어야함
             const salesInfo = data.info
-            
+
             calcToSearch(startDate, endDate, salesInfo, salesType => {
                 console.log(salesType)
                 setTotalPrice(salesType.total)
@@ -133,6 +133,6 @@ const Sales_of_Premium = (props) => {
     return (
         <Premium_sytle month={month} premiumState={premiumState} totalprice={totalPrice} licence={licence} handleDownload={handleDownload} />
     )
-} 
+}
 
 export default Sales_of_Premium;
